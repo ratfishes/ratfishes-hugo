@@ -4,44 +4,37 @@
 
 
 	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700'; rel='stylesheet' type='text/css'>
-	
-	{{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700' ; rel='stylesheet' type='text/css'> {{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
 
-	<link href='{{ $css.Permalink }}'; rel='stylesheet' type='text/css'>
+	<link href='{{ $css.Permalink }}' ; rel='stylesheet' type='text/css'>
 
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/favicon-16x16.png"  sizes="16x16">
-	<link rel="manifest"  href="/manifest.json" >
-	<link rel="mask-icon" href="/safari-pinned-tab.svg"  color="#5bbad5">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 	<!-- Open Graph -->
-	<meta property="og:title"
-    content="{{ if .Title }}
+	<meta property="og:title" content="{{ if .Title }}
       {{ .Title }}
     {{ else }}
       {{ .Site.Title }}
-    {{ end }}">
+    {{ end }}"> {{ if .Params.description }}
+	<meta property="og:description" content="{{ .Params.description }}"> {{ end }}
 
-	{{ if .Params.description }}
-    <meta property="og:description"
-	content="{{ .Params.description }}">
-	{{ end }}
+	<meta property="og:url" content="{{ .URL }}" />
 
-      <meta property="og:url"
-          content="{{ .URL }}" />
+	<meta property="og:site_name" content="{{ .Site.Title }}" />
 
-      <meta property="og:site_name" content="{{ .Site.Title }}" />
+	<meta property="og:locale" content="en_US" />
 
-      <meta property="og:locale" content="en_US" />
+	<meta name="twitter:site" content="@ratfishes_" />
+	<meta name="twitter:card" content="summary" />
 
-      <meta name="twitter:site" content="@ratfishes_" />
-      <meta name="twitter:card" content="summary" />
-
+    {{ block "head-includes" . }}{{ end }} 
+	
 </head>
-
