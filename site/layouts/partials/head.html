@@ -6,10 +6,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700' ; rel='stylesheet' type='text/css'> {{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
-
-	<link href='{{ $css.Permalink }}' ; rel='stylesheet' type='text/css'>
-
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700' ; rel='stylesheet' type='text/css'>
+	{{ $css := resources.Get "css/main.css" | resources.Minify }}
+	<style>{{ $css.Content | safeCSS }}</style>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
