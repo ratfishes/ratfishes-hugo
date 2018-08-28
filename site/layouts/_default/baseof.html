@@ -1,9 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   {{ partial "head" . }}
-  <body class="sans-serif">
-    {{ partial "nav" . }}
+  <body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="{{ .Site.BaseURL }}/">{{ .Site.Title }}</a></h1>
+          </header>
     {{ block "main" . }}{{ end }} 
-    {{ partial "footer" . }} 
-  </body>
+  </main>
+
+</body>
 </html>

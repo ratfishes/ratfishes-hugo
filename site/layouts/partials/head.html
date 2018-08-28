@@ -1,27 +1,48 @@
 <head>
 
-	<title>{{ .Title }} | Kaldi</title>
-	<link rel="stylesheet" href="/css/main.css" />
+	<title>{{ .Title }}</title>
 
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700" rel="stylesheet">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700'; rel='stylesheet' type='text/css'>
+	
+	{{ $css := resources.Get "css/main.css" }}
+
+	<link href='{{ $css.Permalink }}'; rel='stylesheet' type='text/css'>
+
 
 	<!-- Favicons -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="/manifest.json">
-	<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ff4400">
-	<meta name="theme-color" content="#fff">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png"  sizes="16x16">
+	<link rel="manifest"  href="/manifest.json" >
+	<link rel="mask-icon" href="/safari-pinned-tab.svg"  color="#5bbad5">
 
 	<!-- Open Graph -->
-	<meta property="og:type" content="business.business">
-	<meta property="og:title" content="Kaldi | Great coffee with a conscience">
-	<meta property="og:url" content="/">
-	<meta property="og:image" content="/img/og-image.jpg">
+	<meta property="og:title"
+    content="{{ if .Title }}
+      {{ .Title }}
+    {{ else }}
+      {{ .Site.Title }}
+    {{ end }}">
+
+	{{ if .Params.description }}
+    <meta property="og:description"
+	content="{{ .Params.description }}">
+	{{ end }}
+
+      <meta property="og:url"
+          content="{{ .URL }}" />
+
+      <meta property="og:site_name" content="{{ .Site.Title }}" />
+
+      <meta property="og:locale" content="en_US" />
+
+      <meta name="twitter:site" content="@ratfishes_" />
+      <meta name="twitter:card" content="summary" />
 
 	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
+
