@@ -4,7 +4,7 @@
 <div class="home">
         <ul class="posts">
             {{ range (where .Data.Pages "Type" "post") }}
-            <li><a href="{{ .Permalink }}"><span>{{ .Date.Format "2006-01-01" }}</span>{{ .Title }}</a></li>
+            <li><a href="{{ .Permalink }}"><span>{{ .Date.Format "2006-01-02" }}</span>{{ .Title }}</a></li>
             {{ end }}
         </ul>
     </div>
