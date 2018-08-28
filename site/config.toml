@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://ratfishes.netlify.com/"
 languageCode = "en-us"
 title = "ratfish"
 
