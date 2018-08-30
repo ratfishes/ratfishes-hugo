@@ -12,7 +12,30 @@
 </head>
 
 <body>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js", integrity="sha384-Y3nT3INL++8rl8STMFPhakw4afSMouzN8oejpdS9aG31yd0StImDDxrDy9vzdt1M", crossorigin="anonymous"></script>
+  <script>
+
+      CMS.registerPreviewStyle("/css/cms.css");
+    var PostPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var date = new Date(entry.getIn(['data', 'date']))
+        var dateString = '' + date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ( "0" + (date.getDate() + 1)).slice(-2);
+
+        var image = entry.getIn(['data', 'image']);
+        var bg = this.props.getAsset(image);
+        return h('main', {}, h('article', {"className": "post"},
+          h('h2', {"className": "post-header"}, entry.getIn(['data', 'title'])),
+          h('p', {"className": "post-meta"}, dateString),
+           this.props.widgetFor('body')
+        ));
+      }
+    });
+
+
+    
+    CMS.registerPreviewTemplate("post", PostPreview);
+    </script>
 </body>
 
 </html>

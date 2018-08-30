@@ -5,6 +5,7 @@ body {
   line-height: 1.5;
   color: #f8f8f2;
   background-color: #272822;
+  padding-left: calc(100vw - 100%);
 }
 
 p {
@@ -87,7 +88,9 @@ hr {
   border: none;
   text-align: right;
   line-height: 1px;
+  /* vertical centering */
   height: 1px;
+  /* gap between the lines */
   margin: 0px;
   margin-top: -1.7rem;
   margin-right: -0.5rem;
@@ -105,9 +108,6 @@ hr:after {
   position: relative;
 }
 
-body {
-  padding-left: calc(100vw - 100%);
-}
 
 main {
   max-width: 48rem;
@@ -189,4 +189,3 @@ main {
     text-align: center;
   }
 }
-
